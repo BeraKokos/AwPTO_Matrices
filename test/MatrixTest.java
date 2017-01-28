@@ -26,4 +26,14 @@ public class MatrixTest {
     public void matrixInitTest() {
         assertEquals(matrix, otherMatrix);
     }
+
+    @Test
+    public void matricesAddTest() {
+        Matrix expectedResult = new Matrix(3, 3);
+        expectedResult.setValue(0, 0, 6);
+        expectedResult.setValue(0, 1, 4);
+
+        Matrix result = matrix.add(otherMatrix);
+        assertEquals(expectedResult, result);
+    }
 }

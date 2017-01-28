@@ -30,6 +30,19 @@ class Matrix private(private var matrixArray: Array[Array[Double]], val width: I
     result
   }
 
+  @throws(classOf[MatrixOperationException])
+  def subtract(matrix: Matrix): Matrix = {
+    if (height != matrix.height || width != matrix.width)
+      throw new MatrixOperationException("Subtracting matrices of different sizes is not possible")
+
+    val result = new Matrix(this)
+    for (i <- 0 until width)
+      for (j <- 0 until width)
+        result.matrixArray(i)(j) -= matrix.matrixArray(i)(j)
+
+    result
+  }
+
   def this(matrix: Matrix) {
     this(matrix.matrixArray.map(_.clone), matrix.width, matrix.height)
   }

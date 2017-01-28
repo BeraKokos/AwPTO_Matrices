@@ -37,4 +37,31 @@ public class MatrixTest {
         Matrix result = MatrixUtils.add(matrix, otherMatrix);
         assertEquals(expectedResult, result);
     }
+
+    @Test
+    public void matricesMultiplyTest() {
+        Matrix a = new Matrix(3, 2);
+        a.setValue(0, 0, 1);
+        a.setValue(1, 0, 2);
+        a.setValue(2, 0, 3);
+        a.setValue(0, 1, 1);
+        a.setValue(1, 1, 2);
+        a.setValue(2, 1, 3);
+
+        Matrix b = new Matrix(2, 3);
+        b.setValue(0, 0, 1);
+        b.setValue(1, 0, 2);
+        b.setValue(0, 1, 1);
+        b.setValue(1, 1, 2);
+        b.setValue(0, 2, 1);
+        b.setValue(1, 2, 2);
+
+        Matrix expectedResult = new Matrix(2, 2);
+        expectedResult.setValue(0, 0, 6);
+        expectedResult.setValue(1, 0, 12);
+        expectedResult.setValue(0, 1, 6);
+        expectedResult.setValue(1, 1, 12);
+
+        assertEquals(expectedResult, MatrixUtils.multiply(a, b));
+    }
 }

@@ -1,6 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 import pl.kkbo.matrices.matrix.Matrix;
+import pl.kkbo.matrices.matrix.MatrixUtils;
 
 import static org.junit.Assert.assertEquals;
 
@@ -33,7 +34,7 @@ public class MatrixTest {
         expectedResult.setValue(0, 0, 6);
         expectedResult.setValue(0, 1, 4);
 
-        Matrix result = matrix.add(otherMatrix);
+        Matrix result = MatrixUtils.add(matrix, otherMatrix);
         assertEquals(expectedResult, result);
     }
 }

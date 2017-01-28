@@ -1,7 +1,5 @@
 package pl.kkbo.matrices.matrix
 
-import pl.kkbo.matrices.matrix.exceptions.MatrixOperationException
-
 /**
   * Created by kkarolcz on 28.01.2017.
   */
@@ -15,32 +13,6 @@ class Matrix private(private var matrixArray: Array[Array[Double]], val width: I
 
   def setValue(x: Int, y: Int, value: Double) {
     matrixArray(x)(y) = value
-  }
-
-  @throws(classOf[MatrixOperationException])
-  def add(matrix: Matrix): Matrix = {
-    if (height != matrix.height || width != matrix.width)
-      throw new MatrixOperationException("Adding matrices of different sizes is not possible")
-
-    val result = new Matrix(this)
-    for (i <- 0 until width)
-      for (j <- 0 until width)
-        result.matrixArray(i)(j) += matrix.matrixArray(i)(j)
-
-    result
-  }
-
-  @throws(classOf[MatrixOperationException])
-  def subtract(matrix: Matrix): Matrix = {
-    if (height != matrix.height || width != matrix.width)
-      throw new MatrixOperationException("Subtracting matrices of different sizes is not possible")
-
-    val result = new Matrix(this)
-    for (i <- 0 until width)
-      for (j <- 0 until width)
-        result.matrixArray(i)(j) -= matrix.matrixArray(i)(j)
-
-    result
   }
 
   def this(matrix: Matrix) {

@@ -22,7 +22,7 @@ object MatrixUtils {
 
     val result = new Matrix(matrix)
     for (i <- 0 until matrix.columns)
-      for (j <- 0 until matrix.columns)
+      for (j <- 0 until matrix.rows)
         result.setValue(i, j, matrix.getValue(i, j) + otherMatrix.getValue(i, j))
 
     result
@@ -43,7 +43,7 @@ object MatrixUtils {
 
     val result = new Matrix(matrix)
     for (i <- 0 until matrix.columns)
-      for (j <- 0 until matrix.columns)
+      for (j <- 0 until matrix.rows)
         result.setValue(i, j, matrix.getValue(i, j) - otherMatrix.getValue(i, j))
 
     result

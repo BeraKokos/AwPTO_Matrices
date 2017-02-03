@@ -6,7 +6,6 @@ import pl.kkbo.matrices.matrix.MatrixUtils;
 import static org.junit.Assert.assertEquals;
 
 /**
- * dupa dupa
  * Created by kkarolcz on 28.01.2017.
  */
 public class MatrixTest {
@@ -41,7 +40,6 @@ public class MatrixTest {
 
     @Test
     public void matricesMultiplyTest() {
-        //chuj
         Matrix a = new Matrix(3, 2);
         a.setValue(0, 0, 1);
         a.setValue(1, 0, 2);

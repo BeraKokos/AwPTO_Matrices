@@ -4,7 +4,7 @@ import pl.kkbo.matrices.matrix.Matrix;
 import pl.kkbo.matrices.matrix.MatrixUtils;
 import pl.kkbo.matrices.matrix.exceptions.MatrixOperationException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 /**
  * Created by kkarolcz on 28.01.2017.
@@ -180,6 +180,51 @@ public class MatrixTest {
     }
 
     @Test
+    public void matricesTest() {
+        Matrix a = new Matrix(4, 4);
+        a.setValue(0, 0, 2);
+        a.setValue(1, 0, 0);
+        a.setValue(2, 0, 0);
+        a.setValue(3, 0, 0);
+        a.setValue(0, 1, 0);
+        a.setValue(1, 1, 3);
+        a.setValue(2, 1, 0);
+        a.setValue(3, 1, 0);
+        a.setValue(0, 2, 0);
+        a.setValue(1, 2, 0);
+        a.setValue(2, 2, -1);
+        a.setValue(3, 2, 0);
+        a.setValue(0, 3, 0);
+        a.setValue(1, 3, 0);
+        a.setValue(2, 3, 0);
+        a.setValue(3, 3, 5);
+
+        Matrix b = new Matrix(4, 4);
+        b.setValue(0, 0, -5);
+        b.setValue(1, 0, 0);
+        b.setValue(2, 0, 0);
+        b.setValue(3, 0, 0);
+        b.setValue(0, 1, 0);
+        b.setValue(1, 1, 1);
+        b.setValue(2, 1, 0);
+        b.setValue(3, 1, 0);
+        b.setValue(0, 2, 0);
+        b.setValue(1, 2, 0);
+        b.setValue(2, 2, 7);
+        b.setValue(3, 2, 0);
+        b.setValue(0, 3, 0);
+        b.setValue(1, 3, 0);
+        b.setValue(2, 3, 0);
+        b.setValue(3, 3, -4);
+
+        assertNotNull(MatrixUtils.multiply(a, b));
+
+        assertNotNull(MatrixUtils.add(a, b));
+
+        assertNotNull(MatrixUtils.subtract(a, b));
+    }
+
+    @Test
     public void matricesMultiplyNegativeNumbersTest() {
         Matrix a = new Matrix(3, 2);
         a.setValue(0, 0, -1);
@@ -223,5 +268,55 @@ public class MatrixTest {
         b.setValue(1, 2, 2);
 
         MatrixUtils.multiply(a, b);
+    }
+
+    public void matricesMultiplyDiagonalTest() {
+        Matrix a = new Matrix(4, 4);
+        a.setValue(0, 0, 2);
+        a.setValue(1, 0, 0);
+        a.setValue(2, 0, 0);
+        a.setValue(3, 0, 0);
+        a.setValue(0, 1, 0);
+        a.setValue(1, 1, 3);
+        a.setValue(2, 1, 0);
+        a.setValue(3, 1, 0);
+        a.setValue(0, 2, 0);
+        a.setValue(1, 2, 0);
+        a.setValue(2, 2, -1);
+        a.setValue(3, 2, 0);
+        a.setValue(0, 3, 0);
+        a.setValue(1, 3, 0);
+        a.setValue(2, 3, 0);
+        a.setValue(3, 3, 5);
+
+        Matrix b = new Matrix(4, 4);
+        b.setValue(0, 0, -5);
+        b.setValue(1, 0, 0);
+        b.setValue(2, 0, 0);
+        b.setValue(3, 0, 0);
+        b.setValue(0, 1, 0);
+        b.setValue(1, 1, 1);
+        b.setValue(2, 1, 0);
+        b.setValue(3, 1, 0);
+        b.setValue(0, 2, 0);
+        b.setValue(1, 2, 0);
+        b.setValue(2, 2, 7);
+        b.setValue(3, 2, 0);
+        b.setValue(0, 3, 0);
+        b.setValue(1, 3, 0);
+        b.setValue(2, 3, 0);
+        b.setValue(3, 3, -4);
+
+        Matrix result = MatrixUtils.multiply(a, b);
+        for (int x = 0; x < 4; x++) {
+            for (int y = 0; y < 4; y++) {
+                boolean isZero = result.getValue(x,y) == 0;
+                if (x == y) {
+                    assertFalse(isZero);
+                } else {
+                    assertTrue(isZero);
+                }
+            }
+        }
     }
 }

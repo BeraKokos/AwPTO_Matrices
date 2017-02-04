@@ -70,6 +70,7 @@ public class MatrixTest {
         Matrix result = MatrixUtils.add(a, b);
     }
 
+    @Test
     public void matricesAddDoubleTest() {
         Matrix a = new Matrix(2, 2);
         a.setValue(0, 0, 1.3);
@@ -89,10 +90,12 @@ public class MatrixTest {
         expectedResult.setValue(0, 1, 2.3);
         expectedResult.setValue(1, 1, 2.1);
 
-        boolean sameResult = expectedResult.equals(MatrixUtils.add(a, b));
+        Matrix result = MatrixUtils.add(a, b);
+        boolean sameResult = expectedResult.equals(result);
         assertTrue(sameResult);
     }
 
+    @Test
     public void matricesSubtractDoubleTest() {
         Matrix a = new Matrix(2, 2);
         a.setValue(0, 0, 1.3);
@@ -112,7 +115,34 @@ public class MatrixTest {
         expectedResult.setValue(0, 1, -0.1);
         expectedResult.setValue(1, 1, -0.1);
 
-        boolean sameResult = expectedResult.equals(MatrixUtils.subtract(a, b));
+        Matrix result = MatrixUtils.subtract(a, b);
+        boolean sameResult = expectedResult.equals(result);
+        assertTrue(sameResult);
+    }
+
+    @Test
+    public void matricesMultiplyDoubleTest() {
+        Matrix a = new Matrix(2, 2);
+        a.setValue(0, 0, 1.3);
+        a.setValue(1, 0, 2.2);
+        a.setValue(0, 1, 1.1);
+        a.setValue(1, 1, 2.0);
+
+        Matrix b = new Matrix(2, 2);
+        b.setValue(0, 0, 1.0);
+        b.setValue(1, 0, 2.1);
+        b.setValue(0, 1, 1.2);
+        b.setValue(1, 1, 2.1);
+
+        Matrix expectedResult = new Matrix(2, 2);
+        expectedResult.setValue(0, 0, 3.94);
+        expectedResult.setValue(1, 0, 7.35);
+        expectedResult.setValue(0, 1, 3.5);
+        expectedResult.setValue(1, 1, 6.51);
+
+        Matrix result = MatrixUtils.multiply(a, b);
+
+        boolean sameResult = expectedResult.equals(result);
         assertTrue(sameResult);
     }
 

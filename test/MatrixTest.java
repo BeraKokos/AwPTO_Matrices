@@ -70,6 +70,52 @@ public class MatrixTest {
         Matrix result = MatrixUtils.add(a, b);
     }
 
+    public void matricesAddDoubleTest() {
+        Matrix a = new Matrix(2, 2);
+        a.setValue(0, 0, 1.3);
+        a.setValue(1, 0, 2.2);
+        a.setValue(0, 1, 1.1);
+        a.setValue(1, 1, 2.0);
+
+        Matrix b = new Matrix(2, 2);
+        b.setValue(0, 0, 1.0);
+        b.setValue(1, 0, 2.1);
+        b.setValue(0, 1, 1.2);
+        b.setValue(1, 1, 2.1);
+
+        Matrix expectedResult = new Matrix(2, 2);
+        expectedResult.setValue(0, 0, 2.3);
+        expectedResult.setValue(1, 0, 4.3);
+        expectedResult.setValue(0, 1, 2.3);
+        expectedResult.setValue(1, 1, 2.1);
+
+        boolean sameResult = expectedResult.equals(MatrixUtils.add(a, b));
+        assertTrue(sameResult);
+    }
+
+    public void matricesSubtractDoubleTest() {
+        Matrix a = new Matrix(2, 2);
+        a.setValue(0, 0, 1.3);
+        a.setValue(1, 0, 2.2);
+        a.setValue(0, 1, 1.1);
+        a.setValue(1, 1, 2.0);
+
+        Matrix b = new Matrix(2, 2);
+        b.setValue(0, 0, 1.0);
+        b.setValue(1, 0, 2.1);
+        b.setValue(0, 1, 1.2);
+        b.setValue(1, 1, 2.1);
+
+        Matrix expectedResult = new Matrix(2, 2);
+        expectedResult.setValue(0, 0, 0.3);
+        expectedResult.setValue(1, 0, 0.1);
+        expectedResult.setValue(0, 1, -0.1);
+        expectedResult.setValue(1, 1, -0.1);
+
+        boolean sameResult = expectedResult.equals(MatrixUtils.subtract(a, b));
+        assertTrue(sameResult);
+    }
+
     @Test
     public void matricesAddNegativeNumbersTest() {
         Matrix a = new Matrix(3, 2);
